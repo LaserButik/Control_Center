@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Mentors Agency</title>
+  <meta name="description" content="AI employees that work 24/7 across sales, marketing, support and content.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top" data-brand>AI Mentors Agency</a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-small" href="#contact">Get started</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>More than 14 AI employees, working while you sleep.</h1>
+      <p class="sub" data-tagline>AI employees that work while you sleep.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Talk to us</a>
+        <a class="btn btn-ghost" href="#services">See the services</a>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2>What our AI employees do</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-head"><h3>ALPHA</h3>
+            <span class="badge badge-live">Available now</span></div>
+          <p class="role">Revenue AI Employee</p>
+          <ul>
+            <li>WhatsApp customer conversations</li>
+            <li>Lead qualification and scoring</li>
+            <li>Offer presentation</li>
+            <li>Automatic follow-up</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3>ATLAS</h3>
+            <span class="badge badge-live">Available now</span></div>
+          <p class="role">Research &amp; Intelligence</p>
+          <ul>
+            <li>Website and content health</li>
+            <li>SEO and backlink reads</li>
+            <li>Competitive and reputation analysis</li>
+            <li>B2B prospect research</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3>KIMO</h3>
+            <span class="badge badge-live">Available now</span></div>
+          <p class="role">Conversational AI Employee</p>
+          <ul>
+            <li>Real-time voice conversations</li>
+            <li>Arabic and English</li>
+            <li>Meeting and call support</li>
+            <li>Turn-taking that feels natural</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3>JARVIS</h3>
+            <span class="badge badge-internal">Internal — not publicly available</span></div>
+          <p class="role">Operations Core</p>
+          <ul>
+            <li>Runs the agency's own stack</li>
+            <li>Orchestrates the other employees</li>
+            <li>Internal tooling only</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-head"><h3>Custom</h3>
+            <span class="badge badge-request">By request</span></div>
+          <p class="role">Built for your workflow</p>
+          <ul>
+            <li>Scoped to your process</li>
+            <li>Connected to your tools</li>
+            <li>Approval checkpoints where they matter</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2>One agency, many employees</h2>
+      <p>AI Mentors Agency runs on more than 14 AI employees operating 24/7
+        across sales, marketing, support and content. We use them to run our
+        own agency first, then bring the same approach to yours.</p>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Get in touch</h2>
+      <p>Tell us what you want automated. We reply from
+        <a data-email-link href="mailto:info@example.com">info@example.com</a>.</p>
+      <form data-mailto method="post" action="mailto:info@example.com"
+            enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" rows="4"
+                  placeholder="What would you like an AI employee to handle?"
+                  required></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span data-brand>AI Mentors Agency</span>
+    <span>&copy; 2026 · <a data-domain-link href="#">your-domain</a></span>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      var s = window.SITE || {};
+      if (s.brand) {
+        document.title = s.brand;
+        document.querySelectorAll("[data-brand]").forEach(function (el) {
+          el.textContent = s.brand;
+        });
+      }
+      if (s.tagline) {
+        var t = document.querySelector("[data-tagline]");
+        if (t) t.textContent = s.tagline;
+      }
+      if (s.contactEmail) {
+        document.querySelectorAll("[data-email-link]").forEach(function (a) {
+          a.href = "mailto:" + s.contactEmail;
+          a.textContent = s.contactEmail;
+        });
+        var form = document.querySelector("[data-mailto]");
+        if (form) form.action = "mailto:" + s.contactEmail;
+      }
+      if (s.domain) {
+        var d = document.querySelector("[data-domain-link]");
+        if (d) {
+          d.textContent = s.domain;
+          d.href = "https://" + s.domain;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

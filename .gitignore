@@ -1,0 +1,23 @@
+# Virtual Environment
+venv/
+.venv/
+
+# Environment variables (CRITICAL: Never push this)
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Data & Logs (Client data, sessions, JSON states)
+data/
+linkedin_session/
+*.log
+
+# Streamlit
+.streamlit/
+
+# OS files
+.DS_Store
+Thumbs.db

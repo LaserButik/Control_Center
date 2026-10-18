@@ -1,0 +1,35 @@
+﻿import asyncio
+from mcp import ClientSession
+from mcp.client.streamable_http import streamable_http_client
+
+async def main():
+    # Ø¹Ù†ÙˆØ§Ù† Ø§Ù„Ø³ÙŠØ±ÙØ± ÙˆØ§Ù„Ù…ÙØªØ§Ø­ Ø§Ù„Ø³Ø±ÙŠ
+    url = "http://localhost:8000/mcp"
+    headers = {"Authorization": "Bearer default_super_secret_key_123"}
+
+    print("â³ Connecting to MCP Server...")
+    
+    try:
+        # Ø§Ù„Ø§ØªØµØ§Ù„ Ø¨Ø§Ù„Ø³ÙŠØ±ÙØ±
+        async with streamable_http_client(url, headers=headers) as (read_stream, write_stream, _):
+            async with ClientSession(read_stream, write_stream) as session:
+                # 1. Ø§Ù„Ù…ØµØ§ÙØ­Ø© Ø§Ù„Ø£ÙˆÙ„ÙŠØ© (Initialization)
+                await session.initialize()
+                print("âœ… Connected & Initialized successfully!")
+
+                # 2. Ø·Ù„Ø¨ Ù‚Ø§Ø¦Ù…Ø© Ø§Ù„Ø£Ø¯ÙˆØ§Øª Ø§Ù„Ù…ØªØ§Ø­Ø©
+                tools_response = await session.list_tools()
+                print("\nðŸ› ï¸ Available Tools:")
+                for tool in tools_response.tools:
+                    print(f" - {tool.name}: {tool.description}")
+
+                # 3. ØªØ¬Ø±Ø¨Ø© Ø§Ø³ØªØ¯Ø¹Ø§Ø¡ Ø£Ø¯Ø§Ø© (Ù…Ø«Ù„Ø§Ù‹ Ø¬Ù„Ø¨ Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª Ø§Ù„Ù‚Ù…Ø¹)
+                print("\nðŸš€ Calling 'get_funnel_stats' tool...")
+                result = await session.call_tool("get_funnel_stats", arguments={})
+                print(f"ðŸ“Š Result: {result.content}")
+
+    except Exception as e:
+        print(f"âŒ Error: {e}")
+
+if __name__ == "__main__":
+    asyncio.run(main())
